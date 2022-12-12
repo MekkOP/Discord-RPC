@@ -1,41 +1,38 @@
 fun main() {
-  val clientId = "your-client-id"
-  val rpc = DiscordRPC(clientID)
-  
-  val startTimeStamp = System.currentTimeMillis() / 1000
-  var endTimeStamp: Long
-  
-  val activity = RichPresence.Activity(
-  // Start of the stuff you can change
-    state = "what-gamemode-your-in",
-    details = "what-your-doing",
-    startTimestamp = startTimestamp, // Dont Change this
-    largeImageKey = "minecraft-logo",
-    largeImageText = "what-minecraft-version (java or bedrock)",
-    smallImageKey = "skin",
-    smallImageText = "Username"
-  // End of the stuff you can change
-    }
+    val clientId = "your-client-id-here"
+    val rpc = DiscordRPC(clientId)
+
+    val startTimestamp = System.currentTimeMillis() / 1000
+    var endTimestamp: Long
+
+    val activity = RichPresence.Activity(
+        state = "Playing on Survival Mode",
+        details = "Building a house",
+        startTimestamp = startTimestamp,
+        largeImageKey = "minecraft-logo",
+        largeImageText = "Minecraft",
+        smallImageKey = "character-skin",
+        smallImageText = "Steve"
+    )
 
     var currentDimension = "Overworld"
     var coordinates = "0, 0, 0"
-    
+
     rpc.updatePresence(activity)
-    
+
     while (true) {
-      endTimestamp = System.currentTimeMillis() / 1000
-      activity.timestamps.startTimestamp = startTimestamp
-      activity.timestamps.endTimestamp = endTimestamp
-      
-      // You can change the line below too
-      activity.state = "Escaping spawn on 2b2t in the $currentDimension"
-      activity.details = "Coordinates: $coordinates"
-      
-      rpc.updatePresence(activity)
-      
-      currentDimension = getCurrentDimension()
-      coordinates = getCoordinates()
-      
-      Thread.sleep(1000)
+        endTimestamp = System.currentTimeMillis() / 1000
+
+        val elapsedMinutes = ((endTimestamp - startTimestamp) / 3600).toInt()
+
+        activity.state = "Playing on Survival Mode in the $currentDimension"
+        activity.details = "Coordinates: $coordinates\nPlaying for $elapsedMinutes minutes"
+
+        rpc.updatePresence(activity)
+
+        currentDimension = getCurrentDimension()
+        coordinates = getCoordinates()
+
+        Thread.sleep(15000)
     }
 }
