@@ -7,7 +7,7 @@ fun main() {
   
   val activity = RichPresence.Activity(
     state = "Playing Survival Minecraft",
-    details = "Placing Obsidian",
+    details = "Escaping Spawn on 2b2t",
     startTimestamp = startTimestamp,
     largeImageKey = "minecraft-logo",
     largeImageText = "Minecraft Java Edition"
