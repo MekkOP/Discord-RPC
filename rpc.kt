@@ -6,13 +6,15 @@ fun main() {
   var endTimeStamp: Long
   
   val activity = RichPresence.Activity(
-    state = "Playing Survival Minecraft",
-    details = "Escaping Spawn on 2b2t",
-    startTimestamp = startTimestamp,
+  // Start of the stuff you can change
+    state = "what-gamemode-your-in",
+    details = "what-your-doing",
+    startTimestamp = startTimestamp, // Dont Change this
     largeImageKey = "minecraft-logo",
-    largeImageText = "Minecraft Java Edition"
-    smallImageKey = "character-skin"
+    largeImageText = "what-minecraft-version (java or bedrock)"
+    smallImageKey = "skin"
     smallImageText = "Username"
+  // End of the stuff you can change
     }
 
     var currentDimension = "Overworld"
@@ -31,3 +33,5 @@ fun main() {
       currentDimension = getCurrentDimension()
       
       Thread.sleep(15000)
+    }
+}
