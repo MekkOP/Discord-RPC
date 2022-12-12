@@ -11,13 +11,14 @@ fun main() {
     details = "what-your-doing",
     startTimestamp = startTimestamp, // Dont Change this
     largeImageKey = "minecraft-logo",
-    largeImageText = "what-minecraft-version (java or bedrock)"
-    smallImageKey = "skin"
+    largeImageText = "what-minecraft-version (java or bedrock)",
+    smallImageKey = "skin",
     smallImageText = "Username"
   // End of the stuff you can change
     }
 
     var currentDimension = "Overworld"
+    var coordinates = "0, 0, 0"
     
     rpc.updatePresence(activity)
     
@@ -26,12 +27,15 @@ fun main() {
       activity.timestamps.startTimestamp = startTimestamp
       activity.timestamps.endTimestamp = endTimestamp
       
-      activity.state = "Escaping spawn on 2b2t in the $currentDimension
+      // You can change the line below too
+      activity.state = "Escaping spawn on 2b2t in the $currentDimension"
+      activity.details = "Coordinates: $coordinates"
       
       rpc.updatePresence(activity)
       
       currentDimension = getCurrentDimension()
+      coordinates = getCoordinates()
       
-      Thread.sleep(15000)
+      Thread.sleep(1000)
     }
 }
